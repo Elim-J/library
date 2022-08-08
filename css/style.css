@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+    font-family: 'Ubuntu', 'Karla', sans-serif;
+}
+
+.heading {
+    text-align: center;
+    box-shadow: 2px 1px 1px grey;
+    padding: 1rem 0;
+    background-color: white;
+}
+
+button {
+    background-color: aliceblue;
+    border: none;
+    font-size: 1.25rem;
+    display: block;
+    margin: 2rem auto;
+    padding: .75rem 1.25rem;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color:rgb(226, 233, 239);
+}
+
+
+
+
