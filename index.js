@@ -13,8 +13,25 @@ let library = [
         title: "The World's Longest Book",
         author: "Some Random Person",
         pages: 2341333212
+    },
+    {
+        title: "Book...",
+        author: "Harold George",
+        pages: 256
+    },
+    {
+        title: "Book???",
+        author: "Sarah Pi",
+        pages: 123
+    },
+    {
+        title: "Book!",
+        author: "Some Random Person",
+        pages: 234
     }
 ];
+
+
 
 function Book(title, author, numPages){
     this.title = title;
@@ -22,8 +39,15 @@ function Book(title, author, numPages){
     this.pages = numPages;
 }
 
-function addToLibrary(book){
-    library.push(book);
+function addToLibrary(e){
+    let title = document.getElementById('title');
+    let author = document.getElementById('author');
+    let pages = document.getElementById('pages');
+
+    let newBook = new Book(title.value, author.value, pages.value);
+    library.push(newBook);
+
+    displayBooks();
 }
 
 function printAllBooks(library){
@@ -45,44 +69,52 @@ function displayBooks(){
 
         //create h3 element give textcontent of title
         let title = document.createElement('h3');
-        title.textContent = library[i].title;
+        title.textContent = `Title: ${library[i].title}`;
         div.appendChild(title);
 
         //create h4 element give text content of author append to div
         let author = document.createElement('h4');
-        author.textContent = library[i].author;
+        author.textContent = `Author: ${library[i].author}`;
         div.appendChild(author);
 
         //create h4 element give text content of numpages append to div
         let pageNum = document.createElement('h4');
-        pageNum.textContent = library[i].pages;
+        pageNum.textContent = `Pages: ${library[i].pages}`;
         div.appendChild(pageNum);
 
         bookList.appendChild(div);
     }
-
-    
-   
 }
 
 function openMenu(){
-    //open a form that takes book title, author name,
+    let formEl = document.getElementById('form-el');
+    let btn = document.getElementById('add-btn');
+    formEl.style.display === "none" ? formEl.style.display = "flex" : formEl.style.display = "none";
+   
+    if(btn.textContent === "Add Book +"){
+        btn.textContent = "Close Menu";
+        btn.style.backgroundColor = "red";
 
-    const menu = document.createElement("form");
-    menu.classList.add("menu");
-    //append inputs to menu
-    //append menu to div
-
+    }else{
+        btn.textContent = "Add Book +";
+        btn.style.backgroundColor = "#eff8ff";
+    }    
 }
+
+//form is initially invisible
+let formEl = document.getElementById('form-el');
+formEl.style.display = "none";
 
 let bookList = document.getElementsByClassName("book-list");
 let addBtn = document.getElementById("add-btn");
+let submitBtn = document.getElementById('submit-btn');
 
 addBtn.addEventListener("click", openMenu);
+submitBtn.addEventListener('click', addToLibrary);
 
-let anotherBook = new Book("The WildWildWest", "Elim", 234);
-addToLibrary(anotherBook);
-printAllBooks(library);
 displayBooks();
-// TODO create menu when "Add Book +" is clicked
-// Add option to delete book
+
+
+//Get info from menu
+//display user input
+//add option to delete book from list

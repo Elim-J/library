@@ -28,15 +28,30 @@ button:hover {
 
 #book-list {
     display: grid;
-    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(350px, 1fr)); 
 }
 
 .card {
     background-color: #b7d1e2;
-    
-    margin: 3rem;
-    text-align: center;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: .75rem;
+    text-align: left;
 }
+
+form {
+    display:none;
+    flex-direction: column;
+    position: absolute;
+    background-color:#6b7999;
+    border-radius: 6px;
+}
+
+form > input {
+    margin: 1rem;
+    text-indent: 5px;
+}
+
 
 
 
