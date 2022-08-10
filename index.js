@@ -1,3 +1,6 @@
+/**
+ * Details: User may add or delete books from a library
+ */
 let library = [
     {
         title: "Book One",
@@ -37,6 +40,9 @@ function Book(title, author, numPages){
     this.pages = numPages;
 }
 
+/**
+ * Take user input from menu and add it to library
+ */
 function addToLibrary(){
     let title = document.getElementById('title');
     let author = document.getElementById('author');
@@ -48,10 +54,20 @@ function addToLibrary(){
     createBookCard(newBook.title, newBook.author, newBook.pages);
 }
 
+/**
+ * 
+ * @param {array} library
+ * logs all objects to console 
+ */
 function printAllBooks(library){
     library.map(book => console.log(`"${book.title}", is written by ${book.author} and has ${book.pages} pages`));
 }
 
+/**
+ * 
+ * @param {object} bookTitle 
+ * @returns index of location in library array or -1 if not found
+ */
 function searchFor(bookTitle){
     //return book if found or -1 if not found
     for(let i=0; i< library.length; i++){
@@ -62,6 +78,14 @@ function searchFor(bookTitle){
     return -1;
 }
 
+/**
+ * 
+ * @param {string} title 
+ * @param {string} author 
+ * @param {number} pages 
+ * 
+ * Create card to display and display it
+ */
 function createBookCard(title, author, pages){
     const bookList = document.getElementById('book-list');
     let div = document.createElement('div');
@@ -90,6 +114,9 @@ function createBookCard(title, author, pages){
         bookList.appendChild(div);
 }
 
+/**
+ * Render entire library
+ */
 function displayLibrary(){
     let bookList = document.getElementById('book-list');
     for(let i=0; i<library.length; i++){
@@ -97,6 +124,9 @@ function displayLibrary(){
     }
 }
 
+/**
+ * Open or Close menu
+ */
 function openMenu(){
     let formEl = document.getElementById('form-el');
     let btn = document.getElementById('add-btn');
@@ -112,6 +142,11 @@ function openMenu(){
     }    
 }
 
+/**
+ * 
+ * @param {mouse event} e 
+ * Delete book on click
+ */
 function deleteBook(e){
     //Use event from button click to remove card associated with it
     e.path[2].removeChild(e.path[1]);
