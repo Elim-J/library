@@ -31,15 +31,13 @@ let library = [
     }
 ];
 
-
-
 function Book(title, author, numPages){
     this.title = title;
     this.author = author;
     this.pages = numPages;
 }
 
-function addToLibrary(e){
+function addToLibrary(){
     let title = document.getElementById('title');
     let author = document.getElementById('author');
     let pages = document.getElementById('pages');
@@ -47,7 +45,7 @@ function addToLibrary(e){
     let newBook = new Book(title.value, author.value, pages.value);
     library.push(newBook);
 
-    displayLibrary();
+    createBookCard(newBook.title, newBook.author, newBook.pages);
 }
 
 function printAllBooks(library){
@@ -64,32 +62,38 @@ function searchFor(bookTitle){
     return -1;
 }
 
-function displayBook(title, author, pages){
+function createBookCard(title, author, pages){
     const bookList = document.getElementById('book-list');
     let div = document.createElement('div');
         div.classList.add('card');
 
-        //create h3 element give textcontent of title
         let titleEl = document.createElement('h3');
         titleEl.textContent = `Title: ${title}`;
         div.appendChild(titleEl);
 
-        //create h4 element give text content of author append to div
         let authorEl = document.createElement('h4');
         authorEl.textContent = `Author: ${author}`;
         div.appendChild(authorEl);
 
-        //create h4 element give text content of numpages append to div
         let pageNumEl = document.createElement('h4');
         pageNumEl.textContent = `Pages: ${pages}`;
         div.appendChild(pageNumEl);
+
+        let btnEl = document.createElement('button');
+        btnEl.classList.add("delete-btn");
+        btnEl.textContent = 'Delete Book';
+        btnEl.style.backgroundColor = "#1eb8a9";
+        btnEl.style.color = "white";
+        btnEl.addEventListener('click', deleteBook);
+        div.appendChild(btnEl);
 
         bookList.appendChild(div);
 }
 
 function displayLibrary(){
-    for(let i=0; i < library.length; i++){
-        displayBook(library[i].title, library[i].author, library[i].pages);
+    let bookList = document.getElementById('book-list');
+    for(let i=0; i<library.length; i++){
+        createBookCard(library[i].title, library[i].author, library[i].pages);
     }
 }
 
@@ -108,6 +112,11 @@ function openMenu(){
     }    
 }
 
+function deleteBook(e){
+    //Use event from button click to remove card associated with it
+    e.path[2].removeChild(e.path[1]);
+}
+
 //form is initially invisible
 let formEl = document.getElementById('form-el');
 formEl.style.display = "none";
@@ -116,8 +125,11 @@ let bookList = document.getElementsByClassName("book-list");
 let addBtn = document.getElementById("add-btn");
 let submitBtn = document.getElementById('submit-btn');
 
+
 addBtn.addEventListener("click", openMenu);
 submitBtn.addEventListener('click', addToLibrary);
+let deleteBtn = document.querySelector('delete-btn');
+
 
 displayLibrary();
 
