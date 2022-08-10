@@ -13,17 +13,19 @@ body {
 }
 
 button {
-    background-color: aliceblue;
+    background-color: rgb(110, 157, 198);
     border: none;
     font-size: 1.25rem;
     display: block;
     margin: 2rem auto;
     padding: .75rem 1.25rem;
     border-radius: 6px;
+    color: white;
 }
 
 button:hover {
-    background-color:rgb(226, 233, 239);
+    background-color:rgb(110, 157, 198);
+    filter:brightness(130%);
 }
 
 #book-list {
@@ -45,14 +47,21 @@ form {
     position: absolute;
     background-color:#6b7999;
     border-radius: 6px;
+    padding: 1rem;
+
+    /* move top/left margin edge of element to middle of parent */
+    top: 50%;
+    left: 50%;
+
+    /* Percentage on translate is relative to width/height of element itself */
+    transform: translate(-50%, -50%);
 }
 
 form > input {
     margin: 1rem;
     text-indent: 5px;
+    height: 2rem;
+    width: 15rem;
+    font-size: 1rem;
 }
-
-
-
-
 

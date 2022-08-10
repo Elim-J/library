@@ -108,7 +108,7 @@ function openMenu(){
 
     }else{
         btn.textContent = "Add Book +";
-        btn.style.backgroundColor = "#eff8ff";
+        btn.style.backgroundColor = "rgb(110, 157, 198)";
     }    
 }
 
@@ -130,7 +130,4 @@ addBtn.addEventListener("click", openMenu);
 submitBtn.addEventListener('click', addToLibrary);
 let deleteBtn = document.querySelector('delete-btn');
 
-
 displayLibrary();
-
-//add option to delete book from list
