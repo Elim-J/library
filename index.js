@@ -108,7 +108,7 @@ function createBookCard(title, author, pages){
         btnEl.textContent = 'Delete Book';
         btnEl.style.backgroundColor = "#1eb8a9";
         btnEl.style.color = "white";
-        btnEl.addEventListener('click', deleteBook);
+        btnEl.addEventListener('dblclick', deleteBook);
         div.appendChild(btnEl);
 
         bookList.appendChild(div);
