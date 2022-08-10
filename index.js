@@ -47,7 +47,7 @@ function addToLibrary(e){
     let newBook = new Book(title.value, author.value, pages.value);
     library.push(newBook);
 
-    displayBooks();
+    displayLibrary();
 }
 
 function printAllBooks(library){
@@ -55,34 +55,41 @@ function printAllBooks(library){
 }
 
 function searchFor(bookTitle){
-    //if found, display book, else return "Search not found"
-    //Reduce method might be helpful here
+    //return book if found or -1 if not found
+    for(let i=0; i< library.length; i++){
+        if(library[i].title === bookTitle){
+            return i;
+        }
+    }
+    return -1;
 }
 
-function displayBooks(){
-
+function displayBook(title, author, pages){
     const bookList = document.getElementById('book-list');
-
-    for(let i=0; i< library.length; i++){
-        let div = document.createElement('div');
+    let div = document.createElement('div');
         div.classList.add('card');
 
         //create h3 element give textcontent of title
-        let title = document.createElement('h3');
-        title.textContent = `Title: ${library[i].title}`;
-        div.appendChild(title);
+        let titleEl = document.createElement('h3');
+        titleEl.textContent = `Title: ${title}`;
+        div.appendChild(titleEl);
 
         //create h4 element give text content of author append to div
-        let author = document.createElement('h4');
-        author.textContent = `Author: ${library[i].author}`;
-        div.appendChild(author);
+        let authorEl = document.createElement('h4');
+        authorEl.textContent = `Author: ${author}`;
+        div.appendChild(authorEl);
 
         //create h4 element give text content of numpages append to div
-        let pageNum = document.createElement('h4');
-        pageNum.textContent = `Pages: ${library[i].pages}`;
-        div.appendChild(pageNum);
+        let pageNumEl = document.createElement('h4');
+        pageNumEl.textContent = `Pages: ${pages}`;
+        div.appendChild(pageNumEl);
 
         bookList.appendChild(div);
+}
+
+function displayLibrary(){
+    for(let i=0; i < library.length; i++){
+        displayBook(library[i].title, library[i].author, library[i].pages);
     }
 }
 
@@ -112,9 +119,6 @@ let submitBtn = document.getElementById('submit-btn');
 addBtn.addEventListener("click", openMenu);
 submitBtn.addEventListener('click', addToLibrary);
 
-displayBooks();
+displayLibrary();
 
-
-//Get info from menu
-//display user input
 //add option to delete book from list
