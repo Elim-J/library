@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+    font-family: 'Ubuntu', 'Karla', sans-serif;
+}
+
+.heading {
+    text-align: center;
+    box-shadow: 2px 1px 1px grey;
+    padding: 1rem 0;
+    background-color: white;
+}
+
+button {
+    background-color: rgb(110, 157, 198);
+    border: none;
+    font-size: 1.25rem;
+    display: block;
+    margin: 2rem auto;
+    padding: .75rem 1.25rem;
+    border-radius: 6px;
+    color: white;
+}
+
+button:hover {
+    background-color:rgb(110, 157, 198);
+    filter:brightness(130%);
+}
+
+#book-list {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(350px, 1fr)); 
+}
+
+.card {
+    background-color: #b7d1e2;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: .75rem;
+    text-align: left;
+}
+
+form {
+    display:none;
+    flex-direction: column;
+    position: absolute;
+    background-color:#6b7999;
+    border-radius: 6px;
+    padding: 1rem;
+
+    /* move top/left margin edge of element to middle of parent */
+    top: 50%;
+    left: 50%;
+
+    /* Percentage on translate is relative to width/height of element itself */
+    transform: translate(-50%, -50%);
+}
+
+form > input {
+    margin: 1rem;
+    text-indent: 5px;
+    height: 2rem;
+    width: 15rem;
+    font-size: 1rem;
+}
+
+h1, h3, p {
+    color: #105661;
+}
+

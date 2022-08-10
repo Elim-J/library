@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourLibrary</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;800&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="heading">
+        <h1>Your Library</h1>
+        <p><em>Read on.</em></p>
+    </div>
+    
+    <button id="add-btn">Add Book +</button>
+   
+    <form id="form-el" action="#" method="GET">
+        <input type="text" name="title" id="title" placeholder="Title">
+        <input type="text" name="author" id="author" placeholder="Author">
+        <input type="text" name="pages" id="pages" placeholder="Number of Pages">
+        <button type="button" id="submit-btn">Add to Library</button>
+    </form>
+
+    <div id="menu-container"></div>
+    <div id="book-list"></div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
