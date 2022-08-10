@@ -65,3 +65,7 @@ form > input {
     font-size: 1rem;
 }
 
+h1, h3, p {
+    color: #105661;
+}
+

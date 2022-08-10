@@ -71,11 +71,11 @@ function createBookCard(title, author, pages){
         titleEl.textContent = `Title: ${title}`;
         div.appendChild(titleEl);
 
-        let authorEl = document.createElement('h4');
+        let authorEl = document.createElement('h3');
         authorEl.textContent = `Author: ${author}`;
         div.appendChild(authorEl);
 
-        let pageNumEl = document.createElement('h4');
+        let pageNumEl = document.createElement('h3');
         pageNumEl.textContent = `Pages: ${pages}`;
         div.appendChild(pageNumEl);
 
