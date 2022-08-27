@@ -3,40 +3,40 @@
  */
 class Library{
 
-//     library = [
-//     {
-//         title: "Book One",
-//         author: "Harold George",
-//         pages: 256
-//     },
-//     {
-//         title: "Book Two",
-//         author: "Sarah Pi",
-//         pages: 123
-//     },
-//     {
-//         title: "The World's Longest Book",
-//         author: "Some Random Person",
-//         pages: 2341333212
-//     },
-//     {
-//         title: "Book...",
-//         author: "Harold George",
-//         pages: 256
-//     },
-//     {
-//         title: "Book???",
-//         author: "Sarah Pi",
-//         pages: 123
-//     },
-//     {
-//         title: "Book!",
-//         author: "Some Random Person",
-//         pages: 234
-//     }
-// ];
+    library = [
+    {
+        title: "Book One",
+        author: "Harold George",
+        pages: 256
+    },
+    {
+        title: "Book Two",
+        author: "Sarah Pi",
+        pages: 123
+    },
+    {
+        title: "The World's Longest Book",
+        author: "Some Random Person",
+        pages: 2341333212
+    },
+    {
+        title: "Book...",
+        author: "Harold George",
+        pages: 256
+    },
+    {
+        title: "Book???",
+        author: "Sarah Pi",
+        pages: 123
+    },
+    {
+        title: "Book!",
+        author: "Some Random Person",
+        pages: 234
+    }
+];
 
-    library = [];
+   
 
 constructor(title, author, numPages){
     this.title = title;
