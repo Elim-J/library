@@ -1,40 +1,44 @@
 /**
  * Details: User may add or delete books from a library
  */
-let library = [
-    {
-        title: "Book One",
-        author: "Harold George",
-        pages: 256
-    },
-    {
-        title: "Book Two",
-        author: "Sarah Pi",
-        pages: 123
-    },
-    {
-        title: "The World's Longest Book",
-        author: "Some Random Person",
-        pages: 2341333212
-    },
-    {
-        title: "Book...",
-        author: "Harold George",
-        pages: 256
-    },
-    {
-        title: "Book???",
-        author: "Sarah Pi",
-        pages: 123
-    },
-    {
-        title: "Book!",
-        author: "Some Random Person",
-        pages: 234
-    }
-];
+class Library{
 
-function Book(title, author, numPages){
+//     library = [
+//     {
+//         title: "Book One",
+//         author: "Harold George",
+//         pages: 256
+//     },
+//     {
+//         title: "Book Two",
+//         author: "Sarah Pi",
+//         pages: 123
+//     },
+//     {
+//         title: "The World's Longest Book",
+//         author: "Some Random Person",
+//         pages: 2341333212
+//     },
+//     {
+//         title: "Book...",
+//         author: "Harold George",
+//         pages: 256
+//     },
+//     {
+//         title: "Book???",
+//         author: "Sarah Pi",
+//         pages: 123
+//     },
+//     {
+//         title: "Book!",
+//         author: "Some Random Person",
+//         pages: 234
+//     }
+// ];
+
+    library = [];
+
+constructor(title, author, numPages){
     this.title = title;
     this.author = author;
     this.pages = numPages;
@@ -43,15 +47,15 @@ function Book(title, author, numPages){
 /**
  * Take user input from menu and add it to library
  */
-function addToLibrary(){
+addToLibrary = ()=>{
     let title = document.getElementById('title');
     let author = document.getElementById('author');
     let pages = document.getElementById('pages');
 
-    let newBook = new Book(title.value, author.value, pages.value);
-    library.push(newBook);
+    let newBook = new Library(title.value, author.value, pages.value);
+    this.library.push(newBook);
 
-    createBookCard(newBook.title, newBook.author, newBook.pages);
+    this.createBookCard(newBook.title, newBook.author, newBook.pages);
 }
 
 /**
@@ -59,8 +63,8 @@ function addToLibrary(){
  * @param {array} library
  * logs all objects to console 
  */
-function printAllBooks(library){
-    library.map(book => console.log(`"${book.title}", is written by ${book.author} and has ${book.pages} pages`));
+printAllBooks(library){
+    this.library.map(book => console.log(`"${book.title}", is written by ${book.author} and has ${book.pages} pages`));
 }
 
 /**
@@ -68,10 +72,10 @@ function printAllBooks(library){
  * @param {object} bookTitle 
  * @returns index of location in library array or -1 if not found
  */
-function searchFor(bookTitle){
+searchFor(bookTitle){
     //return book if found or -1 if not found
     for(let i=0; i< library.length; i++){
-        if(library[i].title === bookTitle){
+        if(this.library[i].title === bookTitle){
             return i;
         }
     }
@@ -86,7 +90,7 @@ function searchFor(bookTitle){
  * 
  * Create card to display and display it
  */
-function createBookCard(title, author, pages){
+createBookCard(title, author, pages){
     const bookList = document.getElementById('book-list');
     let div = document.createElement('div');
         div.classList.add('card');
@@ -108,7 +112,7 @@ function createBookCard(title, author, pages){
         btnEl.textContent = 'Delete Book';
         btnEl.style.backgroundColor = "#1eb8a9";
         btnEl.style.color = "white";
-        btnEl.addEventListener('dblclick', deleteBook);
+        btnEl.addEventListener('dblclick', this.deleteBook);
         div.appendChild(btnEl);
 
         bookList.appendChild(div);
@@ -117,17 +121,17 @@ function createBookCard(title, author, pages){
 /**
  * Render entire library
  */
-function displayLibrary(){
+displayLibrary(){
     let bookList = document.getElementById('book-list');
-    for(let i=0; i<library.length; i++){
-        createBookCard(library[i].title, library[i].author, library[i].pages);
+    for(let i=0; i<this.library.length; i++){
+        this.createBookCard(this.library[i].title, this.library[i].author, this.library[i].pages);
     }
 }
 
 /**
  * Open or Close menu
  */
-function openMenu(){
+openMenu(){
     let formEl = document.getElementById('form-el');
     let btn = document.getElementById('add-btn');
     formEl.style.display === "none" ? formEl.style.display = "flex" : formEl.style.display = "none";
@@ -147,10 +151,13 @@ function openMenu(){
  * @param {mouse event} e 
  * Delete book on click
  */
-function deleteBook(e){
+deleteBook(e){
     //Use event from button click to remove card associated with it
     e.path[2].removeChild(e.path[1]);
 }
+}
+let newLibrary = new Library();
+newLibrary.displayLibrary();
 
 //form is initially invisible
 let formEl = document.getElementById('form-el');
@@ -161,8 +168,8 @@ let addBtn = document.getElementById("add-btn");
 let submitBtn = document.getElementById('submit-btn');
 
 
-addBtn.addEventListener("click", openMenu);
-submitBtn.addEventListener('click', addToLibrary);
+addBtn.addEventListener("click", newLibrary.openMenu);
+submitBtn.addEventListener('click', newLibrary.addToLibrary);
 let deleteBtn = document.querySelector('delete-btn');
 
-displayLibrary();
+
